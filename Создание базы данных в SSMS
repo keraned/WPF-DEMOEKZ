@@ -1,0 +1,33 @@
+-- Создание базы данных
+CREATE DATABASE AuthAppDB;
+GO
+
+USE AuthAppDB;
+GO
+
+-- Создание таблицы Users
+CREATE TABLE Users (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Login NVARCHAR(50) UNIQUE NOT NULL,
+    Password NVARCHAR(100) NOT NULL,
+    Role NVARCHAR(20) NOT NULL CHECK (Role IN ('Admin', 'User')),
+    IsBlocked BIT DEFAULT 0,
+    ErrorCount INT DEFAULT 0,
+    LastLoginDate DATETIME NULL,
+    NeedChangePassword BIT DEFAULT 0
+);
+GO
+
+-- Добавление тестовых пользователей
+-- Администратор (не блокируется, не меняет пароль)
+INSERT INTO Users (Login, Password, Role, NeedChangePassword, IsBlocked)
+VALUES ('admin', 'admin123', 'Admin', 0, 0);
+
+-- Обычный пользователь (должен сменить пароль при первом входе)
+INSERT INTO Users (Login, Password, Role, NeedChangePassword)
+VALUES ('user1', 'user123', 'User', 1);
+GO
+
+-- Проверка добавленных пользователей
+SELECT * FROM Users;
+GO
