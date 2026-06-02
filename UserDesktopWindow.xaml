@@ -1,0 +1,26 @@
+<Window x:Class="AuthApp.UserDesktopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Рабочий стол пользователя" Height="350" Width="550"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Добро пожаловать!" FontSize="28" 
+                   FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"
+                   Foreground="DarkGreen"/>
+        
+        <TextBlock Grid.Row="1" Text="Вы успешно авторизовались в системе" 
+                   FontSize="16" HorizontalAlignment="Center" TextWrapping="Wrap"
+                   Margin="0,0,0,10"/>
+        
+        <TextBlock Grid.Row="2" Text="Это рабочий стол пользователя" 
+                   FontSize="14" HorizontalAlignment="Center" 
+                   Foreground="Gray"/>
+    </Grid>
+</Window>
